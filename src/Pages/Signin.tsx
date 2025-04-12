@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../Components/button";
+import { Button } from "../Components/Button";
 import { Input } from "../Components/Input";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
@@ -52,6 +52,7 @@ export function Signin(){
             navigate("/dashboard");
         }catch(e){
             setError(true)
+            console.log(e)
             if(usernameRef.current && passwordRef.current){
                 usernameRef.current.value=""
                 passwordRef.current.value=""

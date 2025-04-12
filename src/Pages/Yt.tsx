@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { Button } from '../Components/button'
+import { Button } from '../Components/Button'
 import { Plus } from '../Components/Icons/Plus'
 import { Card } from '../Components/Card'
 import { CreateContentModal } from '../Components/CreateContentModal'
@@ -26,7 +26,8 @@ export function YoutubeDashboard() {
     },1000*10);
     refer.current=clock;
     if(refer.current){
-      return()=>{clearInterval(refer.current)}
+      return()=>{
+        if(refer.current)clearInterval(refer.current)}
     }
       
   },[])

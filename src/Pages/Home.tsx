@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "../Components/button";
+import { Button } from "../Components/Button";
 import { Brain } from "../Components/Icons/Brain";
 
 export function Home(){
-    let navigate=useNavigate();
+    const navigate=useNavigate();
     return(
         <div className="min-h-screen bg-zinc-900">
             <div className="flex ml-8 md:ml-16 items-end justify-between">

@@ -11,13 +11,21 @@ enum ContentType{
 }
 
 //Controlled Component
-export function CreateContentModal({open,onClose,setRef}){
+export function CreateContentModal({open,onClose,setRef}:{open:any,onClose:any,setRef?:any}){
     const [type,setType]=useState(ContentType.Youtube);
-    const titleRef=useRef<HTMLInputElement>();
-    const linkRef=useRef<HTMLInputElement>();
+    const titleRef=useRef<HTMLInputElement>(null);
+    const linkRef=useRef<HTMLInputElement>(null);
     const {Refresh}=useContent();
 
     async function createContent(){
+        if(titleRef==null || linkRef==null){
+            console.log("Ref is null")
+            return;
+        }
+        if(titleRef.current==null || linkRef.current==null){
+            console.log("Ref is null")
+            return;
+        }
         const title=titleRef.current.value;
         const link=linkRef.current.value;
         
@@ -28,7 +36,7 @@ export function CreateContentModal({open,onClose,setRef}){
                 Authorization:localStorage.getItem("token")
             }
         });
-        setRef(c=>!c);
+        setRef((c: boolean) => !c);
         onClose();
         console.log("FROM CONTENT MODEL");
         Refresh();

@@ -19,7 +19,9 @@ export function ShareDashboard() {
         },1000*100);
         refer.current=clock;
         if(refer.current){
-          return()=>{clearInterval(refer.current)}
+
+          return()=>{
+            if(refer.current)clearInterval(refer.current)}
         }
     },[])
   

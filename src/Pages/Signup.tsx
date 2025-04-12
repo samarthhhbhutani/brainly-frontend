@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Button } from "../Components/button";
+import { Button } from "../Components/Button";
 import { Input } from "../Components/Input";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
@@ -70,9 +70,11 @@ export function Signup() {
                         <span className="text-white text-2xl font-bold mt-4">Create an account</span>
                     </div>
                     <div className="w-72 placeholder-white mt-4">
-                        <Input ref={usernameRef} handeClick={()=>{if(usernameError==""){passwordRef.current?.focus();{console.log(!usernameError)}}}} onCh={(e) => validateUsername(e.target.value)} placeholder="Username" />
+                        
+                        <Input ref={usernameRef} handeClick={()=>{if(usernameError==""){passwordRef.current?.focus();{console.log(!usernameError)}}}} onCh={(e:any) => validateUsername(e.target.value)} placeholder="Username" />
                         {usernameError && <span className="text-red-500 ">{usernameError}</span>}
-                        <Input handeClick={()=>{if(!usernameError && !passwordError){buttonRef.current?.click()}}} ref={passwordRef} onCh={(e) => validatePassword(e.target.value)} placeholder="Password" />
+                        //@ts-ignore
+                        <Input handeClick={()=>{if(!usernameError && !passwordError){buttonRef.current?.click()}}} ref={passwordRef} onCh={(e:any) => validatePassword(e.target.value)} placeholder="Password" />
                         {passwordError && <span className="text-red-500">{passwordError}</span>}
                         <div className="flex justify-center pb-1 pt-4 w-full">
                             <Button loading={!usernameError && !passwordError ? false : true} refer={buttonRef} variant="primary" text="Sign up" onClick={signup} fullWidth={true}></Button>

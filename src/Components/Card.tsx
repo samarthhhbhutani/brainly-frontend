@@ -3,15 +3,14 @@ import { TwitterIcon } from "./Icons/TwitterIcon";
 import { Youtubeicon } from "./Icons/YoutubeIcon";
 import axios from "axios"
 import { BACKEND_URL } from "../config";
-import { useContent } from "../Hooks/useContent";
-import { set } from "zod";
+
 
 export interface CardTypes{
     title:string,
     type:"twitter" | "youtube",
     link: string,
-    id:string,
-    setRef:React.Dispatch<React.SetStateAction<boolean>>
+    id?:string,
+    setRef?:React.Dispatch<React.SetStateAction<boolean>>
 }
 async function deleteContent(id: string) {
     await axios.delete(`${BACKEND_URL}/api/v1/content`, {

@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from "react";
-import { Button } from "./button";
+import { useEffect, useState } from "react";
+import { Button } from "./Button";
 import { CrossIcon } from "./Icons/CrossIcon";
 import { BACKEND_URL } from "../config";
 import axios from 'axios';
 
 // Controlled Component
-export function CreateShareModal({ open, onClose }) {
+export function CreateShareModal({ open, onClose }:{open:boolean, onClose:()=>void}) {
     const [link, setLink] = useState("");
     const [share, setShare] = useState(false);
     const [loading, setLoading] = useState(false);
     const [copySuccess, setCopySuccess] = useState("");
-
+    console.log(loading);
     async function backendHit() {
         try {
             const resp = await axios.get(`${BACKEND_URL}/api/v1/brain/checkShare`, {
