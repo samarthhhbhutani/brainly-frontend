@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Button } from "./button";
+import { Button } from "./Button";
 import { CrossIcon } from "./Icons/CrossIcon";
 import { Input } from "./Input";
 import { BACKEND_URL } from "../config";

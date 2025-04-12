@@ -5,13 +5,13 @@ import { SidebarItem } from "./Sidebaritem";
 import { Bar } from "./Icons/Bar";
 import { useNavigate } from "react-router-dom";
 
-export function Sidebar({dispBar,setDispBar}){
+export function Sidebar({dispBar,setDispBar}:any){
    const navigate=useNavigate();
     return(
         <div>
             <div 
             onClick={() => {
-                setDispBar(prev => {
+                setDispBar((prev:any) => {
                     console.log(!prev); // Logs the updated value
                     return !prev;
                 });
