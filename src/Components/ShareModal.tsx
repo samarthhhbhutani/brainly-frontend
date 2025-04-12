@@ -15,7 +15,7 @@ export function CreateShareModal({ open, onClose }) {
         try {
             const resp = await axios.get(`${BACKEND_URL}/api/v1/brain/checkShare`, {
                 headers: {
-                    token: localStorage.getItem("token")
+                    Authorization: localStorage.getItem("token")
                 }
             });
             return resp;
@@ -44,7 +44,7 @@ export function CreateShareModal({ open, onClose }) {
         try {
             const resp = await axios.post(`${BACKEND_URL}/api/v1/brain/share`, {}, {
                 headers: {
-                    token: localStorage.getItem("token")
+                    Authorization: localStorage.getItem("token")
                 }
             });
             setLoading(false);
@@ -59,7 +59,7 @@ export function CreateShareModal({ open, onClose }) {
         try {
             await axios.delete(`${BACKEND_URL}/api/v1/brain/share`, {
                 headers: {
-                    token: localStorage.getItem("token")
+                    Authorization: localStorage.getItem("token")
                 }
             });
         } catch (error) {
@@ -83,7 +83,7 @@ export function CreateShareModal({ open, onClose }) {
     }, [share]);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(link);
+        navigator.clipboard.writeText("localhost:5174/share/"+link);
         setCopySuccess("Link copied!");
         console.log("DONE");
         setTimeout(() => setCopySuccess(""), 2000);
@@ -105,7 +105,7 @@ export function CreateShareModal({ open, onClose }) {
                             </label>
                         </div>
                         <div className="flex">
-                        <span className="border px-2 rounded-md flex items-center w-48 mr-2 overflow-x-auto no-scrollbar">{share ? link: "No Link"}</span>
+                        <span className="border px-2 rounded-md flex items-center w-48 mr-2 overflow-x-auto no-scrollbar">{share ? "localhost:5174/share/"+link: "No Link"}</span>
                         <Button text="Copy link" variant="primary" loading={share ? false : true} onClick={() => handleCopy()} large={false}></Button>
                     </div>            
                         {copySuccess && <p className="text-green-500 mt-2">{copySuccess}</p>}

@@ -10,7 +10,7 @@ export function useContent() {
     async function Refresh() {
         await axios.get(`${BACKEND_URL}/api/v1/content`, {
             headers: {
-                token: localStorage.getItem("token")
+                Authorization: localStorage.getItem("token")
             }
         })
             .then((response) => {
@@ -36,7 +36,7 @@ export function useMediaContent({ type }: { type: string }) {
             { type: type }, // Data goes here
             {
                 headers: {
-                    token: localStorage.getItem("token")
+                    Authorization: localStorage.getItem("token")
                 }
             }
         )

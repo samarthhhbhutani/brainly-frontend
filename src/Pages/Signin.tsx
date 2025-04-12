@@ -13,8 +13,28 @@ export function Signin(){
     const buttonRef = useRef<HTMLButtonElement>(null);
     const [error,setError]=useState(false);
     const navigate=useNavigate();
+
+    async function checkSignin(){
+        const token=localStorage.getItem("token");
+        if(token){
+            try{
+                const response=await axios.get(BACKEND_URL+"/api/v1/checkUser",{
+                    headers:{
+                        authorization:token
+                    }
+                });
+                if(response.status===200){
+                    navigate("/dashboard");
+                }
+            }catch(e){
+                console.log(e);
+            }
+        }
+    }
+
     useEffect(()=>{
         usernameRef.current?.focus()
+        checkSignin();
     },[])
     
 
@@ -27,7 +47,7 @@ export function Signin(){
                 password
             })
             const jwt=response.data.token;
-            localStorage.setItem("token",jwt);
+            localStorage.setItem("token","Bearer "+jwt);
             setError(false);
             navigate("/dashboard");
         }catch(e){
@@ -40,7 +60,7 @@ export function Signin(){
         }
         //Redirect user to Dashboard
     }
-    
+
     return(
    
     <div className="bg-zinc-900 h-screen w-screen">
@@ -66,6 +86,11 @@ export function Signin(){
                 </div>
                 {error && <div className="text-red-500 text-center mb-2 text-lg">Incorrect Credentials</div>}
                 <h2 className="flex justify-center text-sm grow-1 shrink-0 basis-auto w-full mx-auto text-white">Don't have an account? <span className="ml-1 cursor-pointer underline font-bold hover:opacity-80 text-purple-600" onClick={()=>{navigate("/signup")}}>Sign up</span></h2>
+                <div className="flex justify-center py-4 w-full">
+                    <form action={BACKEND_URL+"/auth/google"} method="GET" target="_self">
+                    <Button refer={buttonRef} loading={false} variant="primary" text="Sign in with Google" type={"submit"} fullWidth={true}></Button>
+                    </form>
+                </div>
 
                 </div>
             </div>

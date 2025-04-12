@@ -39,8 +39,9 @@ export function Signup() {
         const password = passwordRef.current?.value;
         try{
             if (!usernameError && !passwordError) {
-                await axios.post(BACKEND_URL + "/api/v1/signup", { username, password });
-                navigate("/signin");
+                const resp=await axios.post(BACKEND_URL + "/api/v1/signup", { username, password });
+                localStorage.setItem("token", resp.data.token);
+                navigate("/dashboard");
             }
             setError("");
         }catch(e){

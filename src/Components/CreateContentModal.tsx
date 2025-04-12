@@ -11,7 +11,7 @@ enum ContentType{
 }
 
 //Controlled Component
-export function CreateContentModal({open,onClose}){
+export function CreateContentModal({open,onClose,setRef}){
     const [type,setType]=useState(ContentType.Youtube);
     const titleRef=useRef<HTMLInputElement>();
     const linkRef=useRef<HTMLInputElement>();
@@ -25,9 +25,10 @@ export function CreateContentModal({open,onClose}){
             link,title,type
         },{
             headers:{
-                token:localStorage.getItem("token")
+                Authorization:localStorage.getItem("token")
             }
         });
+        setRef(c=>!c);
         onClose();
         console.log("FROM CONTENT MODEL");
         Refresh();

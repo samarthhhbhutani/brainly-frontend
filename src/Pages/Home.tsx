@@ -69,7 +69,7 @@ export function Home(){
                 </div>
                 <h2 className="text-white font-bold text-4xl">Brainly</h2>
                 <h2 className="text-xl mt-6 text-white">Free without limits</h2>
-                <h2 className="text-purple-600 text-xl mt-2 hover:opacity-80 cursor-pointer font-bold">Sign Up Now</h2>
+                <h2 onClick={()=>{navigate("/signup")}} className="text-purple-600 text-xl mt-2 hover:opacity-80 cursor-pointer font-bold">Sign Up Now</h2>
             </div>
             </div>
 

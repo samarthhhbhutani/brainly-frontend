@@ -9,7 +9,8 @@ interface ButtonProps{
     fullWidth?:boolean,
     loading?:boolean,
     large?:boolean,
-    refer?:any
+    refer?:any,
+    type?:"button" | "submit" | "reset"
 };
 
 const variantStyles={
@@ -19,8 +20,8 @@ const variantStyles={
 
 const defaultStyles="px-4 py-2 rounded-md font-light flex items-center justify-center"
 
-export function Button({large,variant,fullWidth,text,startIcon,onClick,loading,refer}:ButtonProps){
-    return <button ref={refer} onClick={onClick} className={`${variantStyles[variant]} ${large?"text-lg font-medium":""}  cursor-pointer ${defaultStyles} ${fullWidth ? "w-full":""} ${
+export function Button({large,variant,fullWidth,text,startIcon,onClick,loading,refer,type}:ButtonProps){
+    return <button type={type} ref={refer} onClick={onClick} className={`${variantStyles[variant]} ${large?"text-lg font-medium":""}  cursor-pointer ${defaultStyles} ${fullWidth ? "w-full":""} ${
         loading? "disabled opacity-45": "hover:opacity-80"}
     }`}><div className="pr-2">{startIcon}</div>{text}</button>
 }

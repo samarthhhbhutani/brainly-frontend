@@ -1,16 +1,32 @@
-import { ShareIcon } from "./Icons/ShareIcon";
-import { TwitterOld } from "./Icons/Twitter";
+import { Trash } from "./Icons/Trash";
 import { TwitterIcon } from "./Icons/TwitterIcon";
 import { Youtubeicon } from "./Icons/YoutubeIcon";
+import axios from "axios"
+import { BACKEND_URL } from "../config";
+import { useContent } from "../Hooks/useContent";
+import { set } from "zod";
 
 export interface CardTypes{
     title:string,
     type:"twitter" | "youtube",
-    link: string
+    link: string,
+    id:string,
+    setRef:React.Dispatch<React.SetStateAction<boolean>>
+}
+async function deleteContent(id: string) {
+    await axios.delete(`${BACKEND_URL}/api/v1/content`, {
+        data: {
+            contentId: id
+        },
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    });
 }
 
 
-export function Card({title,link,type}:CardTypes){
+
+export function Card({title,link,type,id,setRef}:CardTypes){
     console.log(title)
     return(
         <div>
@@ -27,8 +43,11 @@ export function Card({title,link,type}:CardTypes){
                 </div>
                 <div className="flex items-center">
                     
-                    <div className="pr-2 text-gray-500">
-                        <ShareIcon/>
+                    <div className="pr-2 cursor-pointer text-gray-500" onClick={async ()=>{
+                        await deleteContent(id);
+                        setRef((prev)=>!prev);
+                    }}>
+                        <Trash/>
                     </div>
                 </div>
             </div>
