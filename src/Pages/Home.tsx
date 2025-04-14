@@ -31,7 +31,6 @@ export function Home(){
                 <a href="#howWorks" className="text-purple-600 text-lg cursor-pointer hover:opacity-80">How it Works?</a>
             </div>
             <div className="mt-16 mr-2">
-{/*             <img src="src/Images/cover.png"></img> */}
             </div> 
             <div className="mt-12 pb-20 grid grid-cols-12">
             <div className="text-white ml-8 mr-16 mt-8 col-span-12 md:col-span-6">
