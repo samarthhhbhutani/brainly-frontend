@@ -32,30 +32,39 @@ export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
       {/* Sidebar */}
       <aside
         className={`fixed top-0 left-0 h-screen bg-white border-r border-gray-200 w-64 transform transition-transform duration-300 ease-in-out z-40 ${
-          dispBar ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+          dispBar ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Logo */}
-        <div className="p-6">
+        <div className="p-4 md:p-6">
           <button
-            onClick={() => navigate("/dashboard")}
-            className="flex items-center gap-2 text-2xl font-semibold text-gray-900 hover:text-purple-600 transition-colors"
+            onClick={() => {
+              navigate("/dashboard");
+              setDispBar(false);
+            }}
+            className="flex items-center gap-2 text-xl md:text-2xl font-semibold text-gray-900 hover:text-purple-600 transition-colors"
           >
-            <Brain className="w-8 h-8" />
+            <Brain className="w-6 h-6 md:w-8 md:h-8" />
             Brainly
           </button>
         </div>
 
         {/* Navigation */}
-        <nav className="px-4 space-y-1">
+        <nav className="px-2 md:px-4 space-y-1">
           <SidebarItem
-            onClick={() => navigate('/dashboard/twitter')}
+            onClick={() => {
+              navigate('/dashboard/twitter');
+              setDispBar(false);
+            }}
             text="Twitter"
             icon={<TwitterIcon className="w-5 h-5" />}
             isActive={isActive('/dashboard/twitter')}
           />
           <SidebarItem
-            onClick={() => navigate('/dashboard/youtube')}
+            onClick={() => {
+              navigate('/dashboard/youtube');
+              setDispBar(false);
+            }}
             text="Youtube"
             icon={<YoutubeIcon className="w-5 h-5" />}
             isActive={isActive('/dashboard/youtube')}

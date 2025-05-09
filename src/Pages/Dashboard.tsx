@@ -62,15 +62,15 @@ export function Dashboard() {
     <div className="flex min-h-screen bg-gray-100">
       <Sidebar dispBar={dispBar} setDispBar={setDispBar} />
       
-      <main className={`flex-1 transition-all duration-300 ${dispBar ? 'ml-48' : 'ml-64'} p-6`}>
-        <div className={`container ${modalOpen || shareOpen ? 'opacity-60' : ''}`}>
+      <main className={`flex-1 transition-all duration-300 md:ml-64 ml-12 p-4 md:p-6`}>
+        <div className={`${modalOpen || shareOpen ? 'opacity-60' : ''}`}>
           {/* Header Section */}
-          <div className="flex-between mb-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div>
               <h1 className="heading-2 text-blackish">My Content</h1>
               <p className="text-body mt-2">Manage and organize your content</p>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-2 md:gap-4">
               <Button
                 onClick={() => setModalOpen(true)}
                 variant="primary"
@@ -99,7 +99,7 @@ export function Dashboard() {
           </div>
 
           {/* Stats Section */}
-          <div className="grid-auto-fit mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <div className="card p-6">
               <div className="flex-between">
                 <div>
@@ -138,7 +138,7 @@ export function Dashboard() {
           </div>
 
           {/* Content Grid */}
-          <div className="grid-auto-fit">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {contents.map(({ type, link, title, _id }) => (
               <div key={_id} className="fade-in">
                 <Card
