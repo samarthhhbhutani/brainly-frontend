@@ -13,20 +13,26 @@
 // }
 import newBrain from "./newBrain.svg";
 
-export function Brain({large}:{ large?:string }){
-    let size=36;
-    if(large==="md"){
-        size=160;
-    }else if(large==="sm"){
-        size=96;
-    }
-    return(
-        <img
-            src={newBrain}
-            width={`${size}`}
-            height={`${size}`}
-            alt="Brain Icon"
-            className="icon icon-tabler icon-tabler-brain"
-        />
-    );
+interface BrainIconProps {
+  large?: string;
+  className?: string;
+}
+
+export function Brain({ large, className }: BrainIconProps) {
+  let size = 36;
+  if (large === "md") {
+    size = 160;
+  } else if (large === "sm") {
+    size = 96;
+  }
+  
+  return (
+    <img
+      src={newBrain}
+      width={size}
+      height={size}
+      alt="Brain Icon"
+      className={className}
+    />
+  );
 }

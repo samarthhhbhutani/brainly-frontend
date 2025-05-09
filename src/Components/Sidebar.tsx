@@ -1,36 +1,88 @@
 import { Brain } from "./Icons/Brain";
 import { TwitterIcon } from "./Icons/TwitterIcon";
-import { Youtubeicon } from "./Icons/YoutubeIcon";
+import { YoutubeIcon } from "./Icons/YoutubeIcon";
 import { SidebarItem } from "./Sidebaritem";
 import { Bar } from "./Icons/Bar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-export function Sidebar({dispBar,setDispBar}:any){
-   const navigate=useNavigate();
-    return(
-        <div>
-            <div 
-            onClick={() => {
-                setDispBar((prev:any) => {
-                    console.log(!prev); // Logs the updated value
-                    return !prev;
-                });
-            }} 
-            className={`${dispBar ? "bg-muted-pastel" : "bg-muted-pastel"} md:hidden z-10 absolute cursor-pointer ml-2 mt-2`}
-        >
-            <Bar />
-        </div>
-        <div className={`h-screen bg-muted-pastel border-r w-48 md:w-64 ${dispBar? "absolute":"hidden"} md:absolute md:block left-0 top-0`}>
-        
-        <div onClick={()=>{navigate("/dashboard")}} className={`flex items-center cursor-pointer text-2xl gap-1 ml-2 md:pt-4 ${dispBar?"pt-10":"pt-4"}`}>
-            <Brain/>
+interface SidebarProps {
+  dispBar: boolean;
+  setDispBar: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
+  return (
+    <>
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setDispBar(prev => !prev)}
+        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-sm hover:bg-gray-50 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <Bar className="w-6 h-6" />
+      </button>
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed top-0 left-0 h-screen bg-white border-r border-gray-200 w-64 transform transition-transform duration-300 ease-in-out z-40 ${
+          dispBar ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+        }`}
+      >
+        {/* Logo */}
+        <div className="p-6">
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="flex items-center gap-2 text-2xl font-semibold text-gray-900 hover:text-purple-600 transition-colors"
+          >
+            <Brain className="w-8 h-8" />
             Brainly
+          </button>
         </div>
-        <div className="pt-4 pl-4">
-        <SidebarItem onCl={()=>{navigate('/dashboard/twitter')}} text="Twitter" icon={<TwitterIcon/>}></SidebarItem>
-        <SidebarItem onCl={()=>{navigate('/dashboard/youtube')}} text="Youtube" icon={<Youtubeicon/>}></SidebarItem>
+
+        {/* Navigation */}
+        <nav className="px-4 space-y-1">
+          <SidebarItem
+            onClick={() => navigate('/dashboard/twitter')}
+            text="Twitter"
+            icon={<TwitterIcon className="w-5 h-5" />}
+            isActive={isActive('/dashboard/twitter')}
+          />
+          <SidebarItem
+            onClick={() => navigate('/dashboard/youtube')}
+            text="Youtube"
+            icon={<YoutubeIcon className="w-5 h-5" />}
+            isActive={isActive('/dashboard/youtube')}
+          />
+        </nav>
+
+        {/* User Section */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
+              <span className="text-sm font-medium text-purple-600">U</span>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-900">User</p>
+              <p className="text-xs text-gray-500">Free Plan</p>
+            </div>
+          </div>
         </div>
-    </div>
-    </div>
-    )
+      </aside>
+
+      {/* Overlay */}
+      {dispBar && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          onClick={() => setDispBar(false)}
+        />
+      )}
+    </>
+  );
 }
