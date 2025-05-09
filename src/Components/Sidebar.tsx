@@ -3,8 +3,8 @@ import { TwitterIcon } from "./Icons/TwitterIcon";
 import { YoutubeIcon } from "./Icons/YoutubeIcon";
 import { SidebarItem } from "./Sidebaritem";
 import { Bar } from "./Icons/Bar";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
 interface SidebarProps {
