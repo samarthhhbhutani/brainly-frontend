@@ -83,21 +83,21 @@ export function Signin() {
             </div>
 
             <div className="space-y-6">
-              <div className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+              <div >
                 <Input
                   ref={usernameRef}
                   handeClick={() => { passwordRef.current?.focus() }}
                   placeholder="Username"
-                  
+                  classDerived="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 hover:ring-purple-500 focus:ring-purple-500 focus:border-transparent transition-all"
                 />
               </div>
 
-              <div className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+              <div >
                 <Input
                   handeClick={() => { buttonRef.current?.click() }}
                   ref={passwordRef}
                   placeholder="Password"
-                  
+                  classDerived="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                 />
               </div>
 
