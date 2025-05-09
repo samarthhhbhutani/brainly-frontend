@@ -101,7 +101,7 @@ body {
 
 /* Scrollbar Styling */
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* Custom Scrollbar */

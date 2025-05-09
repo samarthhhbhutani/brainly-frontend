@@ -58,7 +58,7 @@ export function Card({ title, link, type, id, setRef }: CardTypes) {
                 ) : (
                   <YoutubeIcon className="w-5 h-5 text-red-500" />
                 )}
-              </div>
+            </div>
               <h3 className="font-medium text-gray-900 line-clamp-2">{title}</h3>
             </div>
             <button
@@ -78,24 +78,24 @@ export function Card({ title, link, type, id, setRef }: CardTypes) {
         <div className="card-body">
           {type === "youtube" && (
             <div className="relative pt-[56.25%] rounded-lg overflow-hidden bg-gray-100">
-              <iframe
+            <iframe
                 className="absolute top-0 left-0 w-full h-full"
-                src={link.replace("watch", "embed").replace("?v=", "/")}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
+              src={link.replace("watch", "embed").replace("?v=", "/")}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
               />
             </div>
           )}
-          {type === "twitter" && (
+        {type === "twitter" && (
             <div className="flex-1 flex items-center justify-center bg-gray-50 rounded-lg p-4">
               <blockquote className="twitter-tweet w-full">
-                <a href={link.replace("x.com", "twitter.com")}></a>
-              </blockquote>
+            <a href={link.replace("x.com", "twitter.com")}></a>
+          </blockquote>
             </div>
-          )}
+        )}
         </div>
 
         {/* Footer */}

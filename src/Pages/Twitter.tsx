@@ -35,7 +35,7 @@ export function TwitterDashboard() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <Sidebar dispBar={dispBar} setDispBar={setDispBar}/>
-      <main className={`flex-1 transition-all duration-300 md:ml-64 p-4 md:p-6`}>
+      <main className={`flex-1 transition-all duration-300 md:ml-64 p-4 md:p-6 ml-12`}>
         <div className={`${modalOpen || shareOpen ? 'opacity-60' : ''}`}>
           {/* Header Section */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">

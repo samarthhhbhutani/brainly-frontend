@@ -4,6 +4,8 @@ import { YoutubeIcon } from "./Icons/YoutubeIcon";
 import { SidebarItem } from "./Sidebaritem";
 import { Bar } from "./Icons/Bar";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+
 
 interface SidebarProps {
   dispBar: boolean;
@@ -12,11 +14,34 @@ interface SidebarProps {
 
 export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
+  const [windowSize,setWindowSize] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ]);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize( [
+        window.innerWidth,
+        window.innerHeight,
+      ]);
+    };
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log(windowSize);
+    if(windowSize[0] > 768) {
+      setDispBar(true);
+    }else{
+      setDispBar(false);
+    }
+  } , [windowSize]);
 
   return (
     <>
@@ -42,9 +67,9 @@ export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
               navigate("/dashboard");
               setDispBar(false);
             }}
-            className="flex items-center gap-2 text-xl md:text-2xl font-semibold text-gray-900 hover:text-purple-600 transition-colors"
+            className="flex items-center gap-2 text-2xl md:text-2xl font-semibold text-gray-900 hover:text-purple-600 transition-colors"
           >
-            <Brain className="w-6 h-6 md:w-8 md:h-8" />
+            <Brain className="w-8 h-8 md:w-8 md:ml-0 ml-12 md:h-8" />
             Brainly
           </button>
         </div>
@@ -58,7 +83,6 @@ export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
             }}
             text="Twitter"
             icon={<TwitterIcon className="w-5 h-5" />}
-            isActive={isActive('/dashboard/twitter')}
           />
           <SidebarItem
             onClick={() => {
@@ -67,7 +91,6 @@ export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
             }}
             text="Youtube"
             icon={<YoutubeIcon className="w-5 h-5" />}
-            isActive={isActive('/dashboard/youtube')}
           />
         </nav>
 
