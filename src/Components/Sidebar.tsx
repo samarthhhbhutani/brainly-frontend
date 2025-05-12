@@ -48,7 +48,7 @@ export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setDispBar(prev => !prev)}
-        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-sm hover:bg-gray-50 transition-colors"
+        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-newc shadow-sm hover:bg-gray-50 transition-colors"
         aria-label="Toggle menu"
       >
         <Bar className="w-6 h-6" />
@@ -56,7 +56,7 @@ export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen bg-white border-r border-gray-200 w-64 transform transition-transform duration-300 ease-in-out z-40 ${
+        className={`fixed top-0 left-0 h-screen bg-newc/0.45 border-r border-gray-200 w-64 transform transition-transform duration-300 ease-in-out z-40 ${
           dispBar ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -65,9 +65,8 @@ export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
           <button
             onClick={() => {
               navigate("/dashboard");
-              setDispBar(false);
             }}
-            className="flex items-center gap-2 text-2xl md:text-2xl font-semibold text-gray-900 hover:text-purple-600 transition-colors"
+            className="flex items-center gap-2 text-2xl md:text-2xl font-semibold text-white hover:text-purple-600 transition-colors"
           >
             <Brain className="w-8 h-8 md:w-8 md:ml-0 ml-12 md:h-8" />
             Brainly
@@ -101,7 +100,7 @@ export function Sidebar({ dispBar, setDispBar }: SidebarProps) {
               <span className="text-sm font-medium text-purple-600">U</span>
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-900">User</p>
+              <p className="text-sm font-medium text-gray-50">User</p>
               <p className="text-xs text-gray-500">Free Plan</p>
             </div>
           </div>

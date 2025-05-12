@@ -38,11 +38,11 @@ export function ShareDashboard() {
     <div className={``}>
     <Sidebar dispBar={dispBar} setDispBar={setDispBar}/>
     </div>
-    <div className={`p-4  md:ml-64 min-h-screen bg-blackish ${dispBar?"ml-48":""}`}>
+    <div className={`p-4 ml-8 md:ml-64 min-h-screen bg-blackish ${dispBar?"ml-48":""}`}>
       <div className='text-white text-lg md:text-2xl md:px-0 px-8 font-bold'>
         You are viewing the shared content of {user}
       </div>
-      <div className={`flex mt-8 gap-4 flex-wrap` }>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
         {contents.map(({type,link,title})=>
         <Card type={type} link={link} title={title}/>)}
       </div>

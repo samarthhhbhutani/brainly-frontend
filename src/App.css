@@ -12,6 +12,7 @@
   --color-warning: #F59E0B;
   --color-error: #EF4444;
   --color-info: #3B82F6;
+  --color-newc:rgb(215,199,235)
 
   /* Typography */
   --font-primary: 'Inter', system-ui, -apple-system, sans-serif;

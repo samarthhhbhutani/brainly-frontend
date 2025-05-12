@@ -14,7 +14,7 @@ export function SidebarItem({ text, icon, onClick, isActive }: SidebarItemProps)
       className={`flex items-center w-full text-left px-3 py-2 rounded-lg transition-colors ${
         isActive
           ? 'bg-purple-50 text-purple-600'
-          : 'text-gray-700 hover:bg-gray-50'
+          : 'text-white hover:bg-gray-100 hover:text-purple-600'
       }`}
     >
       <div className="p-2">{icon}</div>

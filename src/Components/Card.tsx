@@ -59,7 +59,7 @@ export function Card({ title, link, type, id, setRef }: CardTypes) {
                   <YoutubeIcon className="w-5 h-5 text-red-500" />
                 )}
             </div>
-              <h3 className="font-medium text-gray-900 line-clamp-2">{title}</h3>
+              <h3 className="font-medium text-neutral-100 line-clamp-2">{title}</h3>
             </div>
             <button
               onClick={handleDelete}
