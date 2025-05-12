@@ -105,7 +105,7 @@ export function CreateShareModal({ open, onClose }:{open:boolean, onClose:()=>vo
                             </label>
                         </div>
                         <div className="flex">
-                        <span className="border bg-zinc-900/85 px-2 rounded-md flex items-center w-48 mr-2 overflow-x-auto no-scrollbar">{share ? "localhost:5174/share/"+link: "No Link"}</span>
+                        <span className="border bg-zinc-900/85 px-2 rounded-md flex items-center w-48 mr-2 overflow-x-auto no-scrollbar">{share ? "https://brainly-xi.vercel.app/share/"+link: "No Link"}</span>
                         <Button text="Copy link" variant="primary" loading={share ? false : true} onClick={() => handleCopy()} large={false}></Button>
                     </div>            
                         {copySuccess && <p className="text-green-500 mt-2">{copySuccess}</p>}
